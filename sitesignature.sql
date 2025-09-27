@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 27 sep. 2025 à 18:42
+-- Généré le : sam. 27 sep. 2025 à 18:58
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -34,7 +34,7 @@ CREATE TABLE `dut1` (
   `username` varchar(100) NOT NULL,
   `telephone` varchar(20) DEFAULT NULL,
   `mot_de_passe` varchar(20) DEFAULT NULL,
-  `photo` longblob NOT NULL,
+  `photo` longblob DEFAULT NULL,
   `date_creation` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
