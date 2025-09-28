@@ -14,10 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $hash = password_hash($mot_de_passe, PASSWORD_BCRYPT);
 
     try {
-        while ($confirm === $mot_de_passe){
-            echo "les mots de passe sont different";
-            break;
-        }
+
         $stmt = $pdo->prepare(
             "INSERT INTO parrainmarrainemame (Nom, Prenom, Username, Telephone, `mot_de_passe`, Photo, niveau) 
             VALUES (?, ?, ?, ?, ?, ?, ?)"
