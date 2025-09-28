@@ -1,0 +1,344 @@
+body,html{
+font-family: 'Poppins','Inter','Sans-serif';
+margin: 0;
+padding: 0;
+}
+
+img{
+width: 350px;
+}
+
+.split-layout{
+    display: flex; 
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-section{
+ width: 60%;
+ background-image: url(ressources/tof1.jpg);
+ background-position: center;
+ background-size: cover;
+ position: relative;
+}
+
+
+.form-container{
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: linear-gradient(-45deg, #002e5b, #82a5c8, #4586B3, #0A66C2);
+    background-size: 400% 400%;
+    animation: gradientSmooth 5s ease-in-out infinite;
+}
+.form-section {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 400% 400%;
+    animation: gradientSmooth 5s ease-in-out infinite;
+}
+
+
+@keyframes gradientSmooth {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+h1 {
+    margin-bottom: 15px;
+    font-size: 32px;
+    text-align: center;
+    width: 100%;
+    color: #002e5b; 
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+}
+
+p {
+    margin-bottom: 25px;
+    text-align: center;
+    width: 100%;
+    color: #343333
+}
+
+.connect-link {
+    color: #0A66C2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.connect-link:hover {
+    color: #002e5b;
+    transform: translateY(-1px);
+}
+
+.connect-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #0A66C2;
+    transition: all 0.3s ease;
+}
+
+.connect-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    align-items: center; 
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    width: 70%; 
+    text-align: left;
+}
+
+input, select, button {
+    width: 70%; 
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* SELECT SIMPLIFIÉ */
+select {
+    width: 70%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23002e5b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    padding-right: 40px;
+}
+
+/* INPUT FILE SIMPLIFIÉ - MEME TAILLE QUE LES AUTRES */
+input[type="file"] {
+    width: 70%;
+    padding: 11px; /* Un peu moins de padding pour compenser la bordure */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    box-sizing: border-box;
+}
+
+/* Style pour le texte de l'input file */
+input[type="file"]::file-selector-button {
+    display: none; /* Cache le bouton par défaut */
+}
+
+input:focus, select:focus {
+    border-color: #0A66C2;
+    box-shadow: 0 0 5px rgba(10, 102, 194, 0.3);
+    outline: none;
+    transform: scale(1.02);
+}
+
+button {
+    background: linear-gradient(45deg, #8055c1, #428dd8, #8055c1);
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 70%;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-position: 100% 0%;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.error-message {
+    color: #ff3860;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+    width: 70%;
+    text-align: left;
+}
+
+.input-error {
+    border-color: #ff3860;
+    background-color: #fff5f5;
+}
+
+.input-success {
+    border-color: #23d160;
+}
+
+
+@media (max-width: 768px) {
+     body, html {
+        margin: 0;
+        padding: 0;
+    }
+    .split-layout {
+        flex-direction: column;
+        height: 100vh;
+        overflow: auto;
+    }
+    img{
+    display: none;
+    }
+    .hero-section {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    
+    .form-section {
+        width: 100%;
+        height: 100vh;
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px; /* Encore plus d'espace */
+        box-sizing: border-box;
+    }
+    
+    .form-container {
+        background: linear-gradient(-45deg, #002e5b, #82a5c8, #4586B3, #0A66C2);
+        background-size: 400% 400%;
+        animation: gradientSmooth 5s ease-in-out infinite;
+        margin: 0;
+        width: 85%; /* Plus étroit */
+        max-width: 350px; /* Encore plus petit */
+        max-height: 80vh; /* Beaucoup plus court */
+        padding: 25px 20px; /* Moins de padding */
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        overflow-y: auto;
+        scrollbar-width: thin;
+     scrollbar-color: rgba(255,255,255,0.5) transparent;
+}
+    
+    input, select, input[type="file"] {
+        width: 90% !important; /* Force la même largeur pour tous */
+    }
+
+    .file-text {
+        width: 90%;
+    }
+
+     select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23002e5b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 15px center !important;
+        background-size: 12px !important;
+        padding-right: 40px !important;
+    }
+    /* Texte moins blanc - plus doux */
+    h1, h2, p, label {
+        color: rgba(255, 255, 255, 0.95); /* Blanc légèrement transparent */
+        text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    
+    h1 {
+        font-size: 26px;
+        margin-bottom: 5px;
+    }
+    
+    h2 {
+        font-size: 15px;
+        margin-bottom: 15px;
+        opacity: 0.9;
+    }
+    
+    p {
+        margin-bottom: 20px;
+        opacity: 0.8;
+    }
+    
+    /* LIEN SIMPLIFIÉ - SANS BACKGROUND */
+    .connect-link {
+        color: #a8d0ff; /* Bleu clair plus doux */
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0; /* Supprime le padding */
+        background: none; /* Supprime le fond */
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .connect-link:hover {
+        color: #ffffff;
+        border-bottom-color: #a8d0ff;
+        background: none; /* Pas de fond au survol */
+    }
+    
+    input, select {
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    input:focus, select:focus {
+        border-color: #a8d0ff; /* Bleu clair plus doux */
+        box-shadow: 0 0 6px rgba(168, 208, 255, 0.6);
+    }
+    
+    label {
+        font-size: 13px;
+        opacity: 0.9;
+    }
+    
+    form {
+        gap: 12px;
+    }
+}
