@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription DUT1</title>
+    <link rel="stylesheet" href="inscriptiondut1.css" />
+    <script src="inscriptiondut1.js"></script>
+</head>
+<body>
+    <div class="split-layout">
+        <section class="hero-section">
+        </section>
+        <section class="form-section">
+            <div class="form-container">
+                <h1>Page d'inscription DUT1</h1>
+                <h2>Créer un compte</h2>
+                <form id="inscription-form">
+                    <label for="prenom">Prenom</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Entrer le prénom..." required>
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" placeholder="Entrer le nom..." required>
+                    <label for="nom-utilisateur">Nom d'Utilisateur</label>
+                    <input type="text" id="nom-utilisateur" name="nom-utilisateur" placeholder="Entrer le nom d'utilisateur..." required>
+                    <label for="mot-de-passe">Mot de passe</label>
+                    <input type="password" id="mot-de-passe" name="mot-de-passe" placeholder="Entrer le mot de passe (lettres et chiffres obligatoires)" required>
+                    <label for="mot-de-passe">Confirmer le mot de passe</label>
+                    <input type="password" id="confirmer-mdp" name="confirmer-mdp" placeholder="Entrer le même mot de passe..." required>
+                    <label for="num-tel">Téléphone</label>
+                    <input type="tel" id="num-tel" name="num-tel" placeholder="Entrer le numéro de téléphone" required>
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                    <small class="file-text">Veuillez sélectionner une photo</small>
+                    <button type="submit">S'inscrire</button>
+                </form>
+                 <p>Vous avez déjà un compte? <a class="connect-link" href="#">Connectez vous ici</a></p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
