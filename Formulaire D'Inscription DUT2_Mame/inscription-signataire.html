@@ -17,19 +17,19 @@
                 <h1>Page d'Inscription DUT2/Mame</h1>
                 <h2>Veuillez entrer vos identifiants</h2>
                 <p>Compte déja créé ?? <a class="connect-link" href="#">Connectez vous ici</a></p>
-                <form id="inscription-form" method="post" action="inscription.php">
+                <form id="inscription-form" method="post" action="../inscription.php">
                     <label for="prenom">Prenom</label>
                     <input type="text" id="prenom" name="prenom" placeholder="Entrer le prénom..." required>
                     <label for="nom">Nom</label>
                     <input type="text" id="nom" name="nom" placeholder="Entrer le nom..." required>
                     <label for="nom-utilisateur">Nom d'Utilisateur</label>
-                    <input type="text" id="nom-utilisateur" name="nom-utilisateur" placeholder="Entrer le nom d'utilisateur..." required>
+                    <input type="text" id="nom-utilisateur" name="username" placeholder="Entrer le nom d'utilisateur..." required>
                     <label for="mot-de-passe">Mot de passe</label>
-                    <input type="password" id="mot-de-passe" name="mot-de-passe" placeholder="Entrer le mot de passe (lettres et chiffres obligatoires)" required>
+                    <input type="password" id="mot-de-passe" name="mot_de_passe" placeholder="Entrer le mot de passe (lettres et chiffres obligatoires)" required>
                     <label for="mot-de-passe">Confirmer le mot de passe</label>
-                    <input type="password" id="confirmer-mdp" name="confirmer-mdp" placeholder="Entrer le même mot de passe..." required>
+                    <input type="password" id="confirmer-mdp" name="confirmer_mdp" placeholder="Entrer le même mot de passe..." required>
                     <label for="num-tel">Téléphone</label>
-                    <input type="tel" id="num-tel" name="num-tel" placeholder="Entrer le numéro de tél (ex: +221 77 777 77 77 )" required>
+                    <input type="tel" id="num-tel" name="telephone" placeholder="Entrer le numéro de tél (ex: +221 77 777 77 77 )" required>
                     <label for="photo">Photo</label>
                     <input type="file" id="photo" name="photo" accept="image/*" required>
                     <small class="file-text">Veuillez sélectionner une photo</small>
