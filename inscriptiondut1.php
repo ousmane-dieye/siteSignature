@@ -7,19 +7,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $telephone = $_POST['telephone'];
     $mot_de_passe = $_POST['mot_de_passe'];
-    $confirm =$_POST['confirmer_mdp'];
-    $role = $_POST['role']; 
-    $photo = $_POST['photo'];
+  #  $photo = $_POST['photo'];
 
     $hash = password_hash($mot_de_passe, PASSWORD_BCRYPT);
 
     try {
 
         $stmt = $pdo->prepare(
-            "INSERT INTO parrainmarrainemame (Nom, Prenom, Username, Telephone, `mot_de_passe`, Photo, niveau) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)"
+            "INSERT INTO dut1 (Nom, Prenom, Username, Telephone, `mot_de_passe`) 
+            VALUES (?, ?, ?, ?, ?)"
         );
-        $stmt->execute([$nom, $prenom, $username, $telephone, $hash, $photo, $role]);
+        $stmt->execute([$nom, $prenom, $username, $telephone, $hash]);
 
         echo "Utilisateur ajouté avec succès !";
     } catch (PDOException $e) {
