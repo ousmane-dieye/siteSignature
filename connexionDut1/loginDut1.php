@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && password_verify($mot_de_passe, $user['mot_de_passe'])) {
         session_start();
         $_SESSION['user_id'] = $user['id'];
-        // ou $user['role'] si stocké dans la table
-        header("Location: dut1_dashboard.php"); // redirection selon rôle
+        // $_SESSION['role'] = 'parrainmarrainemame'; // ou $user['role'] si stocké dans la table
+        header("Location: ../accueilDut1/accueilDut1.php"); // redirection vers l'accueil MAME/DUT2
         exit();
     } else {
         echo "Nom d'utilisateur ou mot de passe incorrect.";

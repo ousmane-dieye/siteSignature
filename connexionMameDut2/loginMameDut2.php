@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = 'parrainmarrainemame'; // ou $user['role'] si stocké dans la table
-        header("Location: ../accueilMameDut2/accueilMameDut2.php"); // redirection selon rôle
+        header("Location: ../accueilMameDut2/accueilMameDut2.php"); // redirection vers l'accueil MAME/DUT2
         exit();
     } else {
         echo "Nom d'utilisateur ou mot de passe incorrect.";
