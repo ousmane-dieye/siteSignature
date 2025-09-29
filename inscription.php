@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $telephone = $_POST['telephone'];
     $mot_de_passe = $_POST['mot_de_passe'];
-    $confirm =$_POST['confirmer_mdp'];
     $role = $_POST['role']; 
     $photo = $_POST['photo'];
 
