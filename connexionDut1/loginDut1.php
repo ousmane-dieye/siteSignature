@@ -1,11 +1,11 @@
 <?php
-require 'db.php';
+require '../db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $mot_de_passe = $_POST['mot_de_passe'];
 
-    $stmt = $pdo->prepare("SELECT * FROM dut1 WHERE Username = ?");
+    $stmt = $pdo->prepare("SELECT * FROM dut1 WHERE username = ?");
     $stmt->execute([$username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
