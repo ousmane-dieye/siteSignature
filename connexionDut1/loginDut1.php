@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && password_verify($mot_de_passe, $user['mot_de_passe'])) {
         session_start();
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['role'] = 'parrainmarrainemame'; // ou $user['role'] si stocké dans la table
+        // ou $user['role'] si stocké dans la table
         header("Location: dut1_dashboard.php"); // redirection selon rôle
         exit();
     } else {

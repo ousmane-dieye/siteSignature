@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
 
         $stmt = $pdo->prepare(
-            "INSERT INTO dut1 (Nom, Prenom, Username, Telephone, `mot_de_passe`) 
+            "INSERT INTO dut1 (nom, prenom, username, telephone, `mot_de_passe`) 
             VALUES (?, ?, ?, ?, ?)"
         );
         $stmt->execute([$nom, $prenom, $username, $telephone, $hash]);

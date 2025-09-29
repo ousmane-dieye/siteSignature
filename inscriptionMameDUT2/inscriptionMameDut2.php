@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $telephone = $_POST['telephone'];
     $mot_de_passe = $_POST['mot_de_passe'];
-    $role = $_POST['role']; 
+    $role = $_POST['niveau']; 
   #  $photo = $_POST['photo'];
 
     $hash = password_hash($mot_de_passe, PASSWORD_BCRYPT);
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
 
         $stmt = $pdo->prepare(
-            "INSERT INTO parrainmarrainemame (Nom, Prenom, Username, Telephone, `mot_de_passe`, `role`) 
+            "INSERT INTO parrainmarrainemame (nom, prenom, username, telephone, `mot_de_passe`, niveau) 
             VALUES (?, ?, ?, ?, ?, ?)"
         );
         $stmt->execute([$nom, $prenom, $username, $telephone, $hash, $role]);
