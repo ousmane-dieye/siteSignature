@@ -17,7 +17,7 @@
                 <h1>Page d'Inscription DUT2/Mame</h1>
                 <h2>Veuillez entrer vos identifiants</h2>
                 <p>Compte déja créé ?? <a class="connect-link" href="#">Connectez vous ici</a></p>
-                <form id="inscription-form" method="post" action="../inscription.php">
+                <form id="inscription-form" method="post" action="../in" enctype="multipart/form-data">
                     <label for="prenom">Prenom</label>
                     <input type="text" id="prenom" name="prenom" placeholder="Entrer le prénom..." required>
                     <label for="nom">Nom</label>
@@ -46,5 +46,7 @@
             </div>
         </section>
     </div>
+
+    <script src="validation.js"></script>
 </body>
 </html>

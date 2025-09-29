@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription DUT2/Mame</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="validation.js"></script>
+</head>
+<body>
+    <div class="split-layout">
+        <section class="hero-section">
+            <img src="ressources/synapse-removebg-preview.png" alt="synapse-logo" />
+        </section>
+        <section class="form-section">
+            <div class="form-container">
+                <h1>Page d'Inscription DUT2/Mame</h1>
+                <h2>Veuillez entrer vos identifiants</h2>
+                <p>Compte déja créé ?? <a class="connect-link" href="#">Connectez vous ici</a></p>
+                <form id="inscription-form" method="post" action="inscription.php" enctype="multipart/form-data">
+                    <label for="prenom">Prenom</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Entrer le prénom..." required>
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" placeholder="Entrer le nom..." required>
+                    <label for="nom-utilisateur">Nom d'Utilisateur</label>
+                    <input type="text" id="nom-utilisateur" name="username" placeholder="Entrer le nom d'utilisateur..." required>
+                    <label for="mot-de-passe">Mot de passe</label>
+                    <input type="password" id="mot-de-passe" name="mot_de_passe" placeholder="Entrer le mot de passe (lettres et chiffres obligatoires)" required>
+                    <label for="mot-de-passe">Confirmer le mot de passe</label>
+                    <input type="password" id="confirmer-mdp" name="confirmer_mdp" placeholder="Entrer le même mot de passe..." required>
+                    <label for="num-tel">Téléphone</label>
+                    <input type="tel" id="num-tel" name="telephone" placeholder="Entrer le numéro de tél (ex: +221 77 777 77 77 )" required>
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                    <small class="file-text">Veuillez sélectionner une photo</small>
+                    <!-- <label for="role-list">Choisir un rôle</label>
+                    <select name="role" id="role-list" required>
+                        <option value="" disabled selected>Sélectionner un rôle</option>
+                        <option value="parrain">Parrain/Marraine</option>
+                        <option value="mame-1">Mame 1</option>
+                        <option value="mame-2">Mame 2</option>
+                        <option value="mame-3">Mame 3</option>
+                    </select> -->
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="validation.js"></script>
+</body>
+</html>
