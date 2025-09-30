@@ -131,7 +131,6 @@ input, select, button {
     transition: all 0.3s ease;
 }
 
-/* SELECT SIMPLIFIÉ */
 select {
     width: 70%;
     padding: 12px;
@@ -147,10 +146,9 @@ select {
     padding-right: 40px;
 }
 
-/* INPUT FILE SIMPLIFIÉ - MEME TAILLE QUE LES AUTRES */
 input[type="file"] {
     width: 70%;
-    padding: 11px; /* Un peu moins de padding pour compenser la bordure */
+    padding: 11px; 
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 14px;
@@ -158,9 +156,8 @@ input[type="file"] {
     box-sizing: border-box;
 }
 
-/* Style pour le texte de l'input file */
 input[type="file"]::file-selector-button {
-    display: none; /* Cache le bouton par défaut */
+    display: none; 
 }
 
 input:focus, select:focus {
@@ -249,7 +246,7 @@ button:disabled {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 50px 20px; /* Encore plus d'espace */
+        padding: 50px 20px; 
         box-sizing: border-box;
     }
     
@@ -258,10 +255,10 @@ button:disabled {
         background-size: 400% 400%;
         animation: gradientSmooth 5s ease-in-out infinite;
         margin: 0;
-        width: 85%; /* Plus étroit */
-        max-width: 350px; /* Encore plus petit */
-        max-height: 80vh; /* Beaucoup plus court */
-        padding: 25px 20px; /* Moins de padding */
+        width: 85%; 
+        max-width: 350px; 
+        max-height: 80vh; 
+        padding: 25px 20px; 
         border-radius: 15px;
         box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         overflow-y: auto;
@@ -270,7 +267,7 @@ button:disabled {
 }
     
     input, select, input[type="file"] {
-        width: 90% !important; /* Force la même largeur pour tous */
+        width: 90% !important; 
     }
 
     .file-text {
@@ -284,9 +281,8 @@ button:disabled {
         background-size: 12px !important;
         padding-right: 40px !important;
     }
-    /* Texte moins blanc - plus doux */
     h1, h2, p, label {
-        color: rgba(255, 255, 255, 0.95); /* Blanc légèrement transparent */
+        color: rgba(255, 255, 255, 0.95); 
         text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }
     
@@ -306,13 +302,12 @@ button:disabled {
         opacity: 0.8;
     }
     
-    /* LIEN SIMPLIFIÉ - SANS BACKGROUND */
     .connect-link {
-        color: #a8d0ff; /* Bleu clair plus doux */
+        color: #a8d0ff; 
         font-weight: 600;
         text-decoration: none;
-        padding: 0; /* Supprime le padding */
-        background: none; /* Supprime le fond */
+        padding: 0; 
+        background: none; 
         border-bottom: 1px solid transparent;
         transition: all 0.3s ease;
     }
@@ -320,7 +315,7 @@ button:disabled {
     .connect-link:hover {
         color: #ffffff;
         border-bottom-color: #a8d0ff;
-        background: none; /* Pas de fond au survol */
+        background: none; 
     }
     
     input, select {
@@ -329,7 +324,7 @@ button:disabled {
     }
     
     input:focus, select:focus {
-        border-color: #a8d0ff; /* Bleu clair plus doux */
+        border-color: #a8d0ff; 
         box-shadow: 0 0 6px rgba(168, 208, 255, 0.6);
     }
     
