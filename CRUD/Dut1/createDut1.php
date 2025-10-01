@@ -9,23 +9,33 @@ $nom_err = $prenom_err = $username_err = $telephone_err = $nbre_signature_err = 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Valider nom
-    $input_name = trim($_POST["nom"]);
-    if(empty($input_name)){
-        $name_err = "Please enter a name.";
-    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $name_err = "Please enter a valid name.";
+    $input_nom = trim($_POST["nom"]);
+    if(empty($input_nom)){
+        $nom_err = "Please enter a nom.";
+    } elseif(!filter_var($input_nom, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $nom_err = "Please enter a valid nom.";
     } else{
-        $name = $input_name;
+        $nom = $input_nom;
     }
 
-    // Validate username
+     // Valider prenom
+    $input_prenom = trim($_POST["nom"]);
+    if(empty($input_prenom)){
+        $prenom_err = "Please enter a prenom.";
+    } elseif(!filter_var($input_prenom, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $prenom_err = "Please enter a valid prenom.";
+    } else{
+        $prenom = $input_prenom;
+    }
+
+    // Valider username
     $input_username = trim($_POST["username"]);
     if(empty($input_username)){
         $username_err = "Please enter a name.";
     } elseif(!filter_var($input_username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
         $username_err = "Please enter a valid name.";
     } else{
-        $name = $input_username;
+        $username = $input_username;
     }
     
     // Validate address
