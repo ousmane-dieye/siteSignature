@@ -152,12 +152,13 @@ body, html {
     .welcome-icon {
         font-size: 50px;
     }
+
      
 
 }
 
 #matrix-canvas {
-    position: fixed;
+     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -165,4 +166,6 @@ body, html {
     pointer-events: none;
     z-index: 9999;
     background: rgb(0, 1, 17); 
+
 }
+   
