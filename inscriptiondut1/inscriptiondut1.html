@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription DUT1</title>
+    <link rel="stylesheet" href="inscriptionDut1.css" />
+    <script src="inscriptionDut1.js"></script>
+</head>
+<body>
+    <div class="split-layout">
+        <section class="hero-section">
+            <video autoplay loop muted playsinline>
+                <source src="ressources/fotor-video_remover_object-preview-20250929210511_chf3_prob3.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas l'animation
+            </video> 
+        </section>
+        <section class="form-section">
+            <div class="form-container">
+                <h1>Page d'inscription DUT1</h1>
+                <h2>Créer un compte</h2>
+                <form id="inscription-form" method="post" action="./inscriptionDut1.php">
+                    <label for="prenom">Prenom</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Entrer le prénom..." required>
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" placeholder="Entrer le nom..." required>
+                    <label for="nom-utilisateur">Nom d'Utilisateur</label>
+                    <input type="text" id="nom-utilisateur" name="username" placeholder="Entrer le nom d'utilisateur..." required>
+                    <label for="mot-de-passe">Mot de passe</label>
+                    <input type="password" id="mot-de-passe" name="mot_de_passe" placeholder="Entrer le mot de passe (lettres et chiffres obligatoires)" required>
+                    <label for="mot-de-passe">Confirmer le mot de passe</label>
+                    <input type="password" id="confirmer-mdp" name="confirmer-mdp" placeholder="Entrer le même mot de passe..." required>
+                    <label for="num-tel">Téléphone</label>
+                    <input type="tel" id="num-tel" name="telephone" placeholder="Entrer le numéro de téléphone" required>
+                    <!-- <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                    <small class="file-text">Veuillez sélectionner une photo</small> -->
+                    <button type="submit">S'inscrire</button>
+                </form>
+                 <p>Vous avez déjà un compte ? <a class="connect-link" href="#">Connectez vous ici</a></p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

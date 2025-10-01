@@ -1,0 +1,168 @@
+body, html {
+    font-family: 'Poppins','Inter','Sans-serif';
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.cover-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transition: all 0.8s ease-in-out;
+}
+
+.cover-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.welcome-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(-45deg, #002e5b, #82a5c8, #4586B3, #0A66C2);
+    background-size: 400% 400%;
+    animation: gradientSmooth 5s ease-in-out infinite;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    color: white;
+    transition: all 0.8s ease-in-out;
+}
+
+@keyframes gradientSmooth {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.welcome-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.welcome-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.welcome-subtitle {
+    font-size: 18px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.welcome-challenge {
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.challenge-box {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.challenge-box h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #002e5b;
+}
+
+.luck-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.challenge-btn {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-weight: bold;
+}
+
+.challenge-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .welcome-container {
+        padding: 30px 20px;
+        width: 95%;
+    }
+    
+    .welcome-container h1 {
+        font-size: 22px;
+    }
+    
+    .welcome-subtitle {
+        font-size: 16px;
+    }
+    
+    .welcome-challenge {
+        font-size: 14px;
+    }
+    
+    .challenge-box h2 {
+        font-size: 20px;
+    }
+    
+    .luck-text {
+        font-size: 18px;
+    }
+    
+    .challenge-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+    
+    .welcome-icon {
+        font-size: 50px;
+    }
+     
+
+}
+
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: rgb(0, 1, 17); 
+}
