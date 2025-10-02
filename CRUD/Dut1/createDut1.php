@@ -1,10 +1,10 @@
 <?php
 // Include config file
-require "../db.php";
+require "../../db.php";
  
 // Define variables and initialize with empty values
-$nom = $prenom = $username = $telephone = $nbre_signature = "";
-$nom_err = $prenom_err = $username_err = $telephone_err = $nbre_signature_err = "";
+$nom = $prenom = $username = $telephone = $nbre_signature = $password = "";
+$nom_err = $prenom_err = $username_err = $telephone_err = $nbre_signature_err = $password_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -38,44 +38,62 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username = $input_username;
     }
     
-    // Validate address
-    $input_address = trim($_POST["address"]);
-    if(empty($input_address)){
-        $address_err = "Please enter an address.";     
+    // Valider telephone
+    $input_telephone = trim($_POST["telephone"]);
+    if(empty($input_telephone)){
+        $telephone_err = "Please enter an telephone number.";     
     } else{
-        $address = $input_address;
+        $telephone = $input_telephone;
     }
     
-    // Validate salary
-    $input_salary = trim($_POST["salary"]);
-    if(empty($input_salary)){
-        $salary_err = "Please enter the salary amount.";     
-    } elseif(!ctype_digit($input_salary)){
-        $salary_err = "Please enter a positive integer value.";
+    //Valider mot de passe
+    $input_password = trim($_POST["mot_de_passe"]);
+    if(empty($password)){
+        $username_err = "Please enter a password";
+    } elseif(!filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $password_err = "Please enter a valid password.";
     } else{
-        $salary = $input_salary;
+        $password = $input_password;
+    }
+
+
+    // Valider nombre_signature
+    $input_nombre_signature = trim($_POST["nombre_signature"]);
+    if(empty($input_nombre_signature)){
+        $nombre_signature_err = "Please enter the nombre_signature.";     
+    } elseif(!ctype_digit($input_nombre_signature)){
+        $nombre_signature_err = "Please enter a positive integer value.";
+    } else{
+        $nombre_signature = hash($input_nombre_signature);
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($address_err) && empty($salary_err)){
+    if(empty($nom_err) && empty($prenom_err) && empty($username_err) && empty($telephone_err) && empty($nombre_signature_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO employees (name, address, salary) VALUES (:name, :address, :salary)";
+        $sql = "INSERT INTO dut1 (nom, prenom, username, telephone, mot_de_passe, nombre_signature) VALUES (:nom, :prenom, :username, :telephone, :mot_de_passe, :nombre_signature";
  
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":name", $param_name);
-            $stmt->bindParam(":address", $param_address);
-            $stmt->bindParam(":salary", $param_salary);
+            $stmt->bindParam(":nom", $param_nom);
+            $stmt->bindParam(":prenom", $param_prenom);
+            $stmt->bindParam(":username", $param_username);
+            $stmt->bindParam(":mot_de_passe", $param_password);
+            $stmt->bindParam(":telephone", $param_telephone);
+            $stmt->bindParam(":nombre_signature", $param_nombre_signature);
             
             // Set parameters
-            $param_name = $name;
-            $param_address = $address;
-            $param_salary = $salary;
+            $param_nom = $nom;
+            $param_prenom = $prenom;
+            $param_username = $username;
+            $param_password = $password;
+            $param_telephone = $telephone;
+            $param_nombre_signature = $nombre_signature;
+
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
-                // Records created successfully. Redirect to landing page
-                header("location: index.php");
+                // Records created successfully. Redirect to landing page liste dut1
+                header("location: listeDut1.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -110,22 +128,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="mt-5">Create Record</h2>
-                    <p>Please fill this form and submit to add employee record to the database.</p>
+                    <p>Please fill this form and submit to add Dut1 record to the database.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
-                            <span class="invalid-feedback"><?php echo $name_err;?></span>
+                            <label>Nom</label>
+                            <input type="text" name="nom" class="form-control <?php echo (!empty($nom_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $nom; ?>">
+                            <span class="invalid-feedback"><?php echo $nom_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <textarea name="address" class="form-control <?php echo (!empty($address_err)) ? 'is-invalid' : ''; ?>"><?php echo $address; ?></textarea>
-                            <span class="invalid-feedback"><?php echo $address_err;?></span>
+                            <label>Prenom</label>
+                            <input type="text" name="prenom" class="form-control <?php echo (!empty($prenom_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $prenom; ?>">
+                            <span class="invalid-feedback"><?php echo $prenom_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Salary</label>
-                            <input type="text" name="salary" class="form-control <?php echo (!empty($salary_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $salary; ?>">
-                            <span class="invalid-feedback"><?php echo $salary_err;?></span>
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                            <span class="invalid-feedback"><?php echo $username_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Telephone</label>
+                            <input type="telephone" name="telephone" class="form-control <?php echo (!empty($telephone_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $telephone; ?>">
+                            <span class="invalid-feedback"><?php echo $telephone_err;?></span>
+                            <!-- <textarea name="address" class="form-control <?php #echo (!empty($address_err)) ? 'is-invalid' : ''; ?>"><?php# echo $address; ?></textarea>
+                            <span class="invalid-feedback"><?php #echo $address_err;?></span> -->
+                        </div>
+                        <div class="form-group">
+                            <label>mot de passe</label>
+                            <input type="password" name="mot_de_passe" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                            <span class="invalid-feedback"><?php echo $password_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre de signature</label>
+                            <input type="number" name="nombre_signature" class="form-control <?php echo (!empty($nombre_signature_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $nombre_signature; ?>">
+                            <span class="invalid-feedback"><?php echo $nombre_signature_err;?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>

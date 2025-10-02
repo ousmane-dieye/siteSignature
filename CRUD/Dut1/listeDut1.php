@@ -30,11 +30,11 @@
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
                         <h2 class="pull-left">Dut1 Details</h2>
-                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Dut1</a>
+                        <a href="createDut1.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Dut1</a>
                     </div>
                     <?php
                     // Include config file
-                    require "../db.php";
+                    require "../../db.php";
                     
                     // Attempt select query execution
                     $sql = "SELECT * FROM dut1";
@@ -48,6 +48,7 @@
                                         echo "<th>Prenom</th>";
                                         echo "<th>Username</th>";
                                         echo "<th>Telephone</th>";
+                                        echo "<th>Mot de passe</th>";
                                         echo "<th>Nombre signature</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -59,6 +60,7 @@
                                         echo "<td>" . $row['prenom'] . "</td>";
                                         echo "<td>" . $row['username'] . "</td>";
                                         echo "<td>" . $row['telephone'] . "</td>";
+                                        echo "<td>" . $row['mot_de_passe'] . "</td>";
                                         echo "<td>" . $row['nombre_signature'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="read.php?id='. $row['id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
