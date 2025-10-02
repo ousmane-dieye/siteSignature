@@ -1,3 +1,4 @@
+/* Reset + base */
 * {
   margin: 0;
   padding: 0;
@@ -10,48 +11,81 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #0f0f1c;
 }
 
+/* Layout */
 .container {
   display: flex;
   width: 100%;
   height: 100vh;
 }
 
+/* Partie gauche avec image + parallax léger */
 .left {
   flex: 0.6;
-  background: url('image.png') no-repeat center center/cover;
+  background: url('tof2.jpg') no-repeat center center/cover;
   position: relative;
+  transition: transform 0.5s ease;
+}
+
+.left:hover {
+  transform: scale(1.03);
+}
+
+.left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.25), rgba(0,0,0,0));
 }
 
 .overlay {
   position: absolute;
   bottom: 50px;
   left: 40px;
-  color: #fff;
+  color: #dff1f6;
+  z-index: 1;
 }
 
 .overlay h1 {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .overlay span {
   color: #33c5d8;
 }
 
+/* Partie droite avec dégradé animé */
 .right {
   flex: 0.4;
-  background: linear-gradient(90deg, #60eade, #0a10b4);
+  background: linear-gradient(270deg, #60eade, #0a10b4);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+  padding: 20px;
 }
 
+/* Formulaire glassmorphism */
 .form-box {
-  width: 350px;
+  width: 100%;
+  max-width: 380px;
+  padding: 40px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.form-box:hover {
+  transform: translateY(-5px);
 }
 
 .form-box h2 {
@@ -64,36 +98,67 @@ body {
   color: #dff1f6;
 }
 
+/* Inputs */
 .input-box {
   margin-bottom: 15px;
 }
 
 .input-box input {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border-radius: 8px;
   border: none;
   outline: none;
-  background: #1e0b3a;
+  background: rgba(30, 11, 58, 0.85);
   color: white;
+  transition: all 0.3s ease;
 }
 
 .input-box input::placeholder {
   color: #aaaaaa;
 }
 
+.input-box input:focus {
+  background: rgba(30, 11, 58, 1);
+  box-shadow: 0 0 12px #33c5d8;
+  transform: scale(1.02);
+}
+
+/* Bouton animé */
 .btn {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(90deg, #11accb, #112d91);
+  background: linear-gradient(270deg, #11accb, #112d91);
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
   color: white;
   font-size: 1rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(51, 197, 216, 0.6);
+}
+
+/* Micro-texte */
+.signup-text {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #dff1f6;
+}
+
+.signup-text span {
+  color: #33c5d8;
+  cursor: pointer;
+}
+
+/* Animation gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
