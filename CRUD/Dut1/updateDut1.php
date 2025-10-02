@@ -32,48 +32,68 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $prenom = $input_prenom;
     }
     
-    // Validate username
+    // Valider username
     $input_username = trim($_POST["username"]);
     if(empty($input_username)){
-        $username_err = "Please enter the username amount.";     
-    } elseif(!ctype_digit($input_username)){
-        $username_err = "Please enter a positive integer value.";
+        $username_err = "Please enter a username.";
+    } elseif(!filter_var($input_username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $username_err = "Please enter a valid username.";
     } else{
         $username = $input_username;
     }
     
-    $input_nombre = trim($_POST["nombre_signature"]);
-    if(empty($input_nombre)){
-        $nombre_err = "Please enter the number amount.";     
-    } elseif(!ctype_digit($input_username)){
-        $nombre_err = "Please enter a positive integer value.";
+    // Valider telephone
+    $input_telephone = trim($_POST["telephone"]);
+    if(empty($input_telephone)){
+        $telephone_err = "Please enter an telephone number.";     
     } else{
-        $nombre = $input_nombre;
+        $telephone = $input_telephone;
+    } 
+
+    // Valider mot de passe
+    $input_password = trim($_POST["mot_de_passe"]);
+    if(empty($password)){
+        $username_err = "Please enter a password";
+    } elseif(!filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $password_err = "Please enter a valid password.";
+    } else{
+        $password = $input_password;
+    }
+
+    // Valider nombre de signature
+    $input_nombre_signature = trim($_POST["nombre_signature"]);
+    if(empty($input_nombre_signature)){
+        $nombre_signature_err = "Please enter the number amount.";     
+    } elseif(!ctype_digit($input_username)){
+        $nombre_signature_err = "Please enter a positive integer value.";
+    } else{
+        $nombre_signature = $input_nombre_signature;
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($prenom_err) && empty($username_err)){
+    if(empty($name_err) && empty($prenom_err) && empty($username_err) && empty($telephone_err) && empty($password_err) && empty($nombre_signature_err)){
         // Prepare an update statement
-        $sql = "UPDATE employees SET name=:name, address=:address, username=:username WHERE id=:id";
+        $sql = "UPDATE du1 SET nom=:nom, prenom=:prenom, username=:username, telephone=:telephone, mot_de_passe=:mot_de_passe,  WHERE id=:id";
  
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":name", $param_name);
             $stmt->bindParam(":prenom", $param_prenom);
             $stmt->bindParam(":username", $param_username);
-            $stmt->bindParam(":id", $param_id);
-             $stmt->bindParam(":nombre_signature", $param_nombre);
+            $stmt->bindParam(":telephone", $param_telephone);
+            $stmt->bindParam(":mot_de_passe", $param_mot_de_passe);
+             $stmt->bindParam(":nombre_signature", $param_nombre_signature);
             // Set parameters
             $param_name = $name;
             $param_prenom = $prenom;
             $param_username = $username;
-            $param_id = $id;
-            $param_nombre = $nombre
+            $param_telephone = $telephone;
+            $param_nombre_signature = $nombre_signature;
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Records updated successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: listeDut1.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -93,7 +113,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM employees WHERE id = :id";
+        $sql = "SELECT * FROM dut1 WHERE id = :id";
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":id", $param_id);
@@ -112,6 +132,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $name = $row["name"];
                     $prenom = $row["prenom"];
                     $username = $row["username"];
+                    $telephone = $row["telephone"];
+                    $mot_de_passe = $row["mot_de_passe"];
+                    $nombre_signature = $row["nombre_signature"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
@@ -158,13 +181,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <p>Please edit the input values and submit to update the employee record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
-                            <span class="invalid-feedback"><?php echo $name_err;?></span>
+                            <label>Nom</label>
+                            <input type="text" name="nom" class="form-control <?php echo (!empty($nom_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $nom; ?>">
+                            <span class="invalid-feedback"><?php echo $nom_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Prenom</label>
-                            <textarea name="Prenom" class="form-control <?php echo (!empty($prenom_err)) ? 'is-invalid' : ''; ?>"><?php echo $prenom; ?></textarea>
+                            <input type="text" name="prenom" class="form-control <?php echo (!empty($prenom_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $prenom; ?>">
                             <span class="invalid-feedback"><?php echo $prenom_err;?></span>
                         </div>
                         <div class="form-group">
@@ -174,7 +197,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <div class="form-group">
                             <label>Nombre de signature</label>
-                            <input type="number" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                            <input type="number" name="nombre_signature" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                             <span class="invalid-feedback"><?php echo $username_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
