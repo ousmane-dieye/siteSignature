@@ -48,8 +48,8 @@
                                         echo "<th>Prenom</th>";
                                         echo "<th>Username</th>";
                                         echo "<th>Telephone</th>";
-                                        echo "<th>Mot de passe</th>";
-                                        echo "<th>Nombre signature</th>";
+                                        // echo "<th>Mot de passe</th>";
+                                        // echo "<th>Nombre signature</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -60,12 +60,12 @@
                                         echo "<td>" . $row['prenom'] . "</td>";
                                         echo "<td>" . $row['username'] . "</td>";
                                         echo "<td>" . $row['telephone'] . "</td>";
-                                        echo "<td>" . $row['mot_de_passe'] . "</td>";
-                                        echo "<td>" . $row['nombre_signature'] . "</td>";
+                                        // echo "<td>" . $row['mot_de_passe'] . "</td>";
+                                        // echo "<td>" . $row['nombre_signature'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="read.php?id='. $row['id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                            echo '<a href="update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                            echo '<a href="delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                            echo '<a href="readDut1.php?id='. $row['id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                            echo '<a href="updateDut1.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                            echo '<a href="deleteDut1.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
