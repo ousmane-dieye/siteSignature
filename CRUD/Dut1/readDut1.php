@@ -27,9 +27,11 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $username = $row["username"];
                 $telephone = $row["telephone"];
                 $password = $row["mot_de_passe"];
+                $nombre_signature = $row["nombre_signature"];
+
             }else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: errorDut1.php");
                 exit();
             }
             
@@ -45,7 +47,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     unset($pdo);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: errorDut1.php");
     exit();
 }
 ?>
