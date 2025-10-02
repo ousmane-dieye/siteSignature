@@ -3,8 +3,8 @@
 require "../../db.php";
  
 // Define variables and initialize with empty values
-$nom = $prenom = $username = $telephone = $nbre_signature = $password = "";
-$nom_err = $prenom_err = $username_err = $telephone_err = $nbre_signature_err = $password_err = "";
+$nom = $prenom = $username = $telephone = $nbre_signature = $mot_de_passe = "";
+$nom_err = $prenom_err = $username_err = $telephone_err = $nbre_signature_err = $mot_de_passe_err = "";
 
  
 // Processing form data when form is submitted
@@ -51,13 +51,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     } 
 
     // Valider mot de passe
-    $input_password = trim($_POST["mot_de_passe"]);
-    if(empty($password)){
-        $username_err = "Please enter a password";
-    } elseif(!filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $password_err = "Please enter a valid password.";
+    $input_mot_de_passe = trim($_POST["mot_de_passe"]);
+    if(empty($mot_de_passe)){
+        $mot_de_passe_err = "Please enter a mot_de_passe";
+    } elseif(!filter_var($mot_de_passe, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $mot_de_passe_err = "Please enter a valid mot_de_passe.";
     } else{
-        $password = $input_password;
+        $mot_de_passe = $input_mot_de_passe;
     }
 
     // Valider nombre de signature
@@ -71,7 +71,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($prenom_err) && empty($username_err) && empty($telephone_err) && empty($password_err) && empty($nombre_signature_err)){
+    if(empty($name_err) && empty($prenom_err) && empty($username_err) && empty($telephone_err) && empty($mot_de_passe_err) && empty($nombre_signature_err)){
         // Prepare an update statement
         $sql = "UPDATE du1 SET nom=:nom, prenom=:prenom, username=:username, telephone=:telephone, mot_de_passe=:mot_de_passe,  WHERE id=:id";
  
@@ -88,6 +88,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $param_prenom = $prenom;
             $param_username = $username;
             $param_telephone = $telephone;
+            $param_mot_de_passe = $mot_de_passe; 
             $param_nombre_signature = $nombre_signature;
             
             // Attempt to execute the prepared statement
@@ -129,7 +130,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                     // Retrieve individual field value
-                    $name = $row["name"];
+                    $nom = $row["nom"];
                     $prenom = $row["prenom"];
                     $username = $row["username"];
                     $telephone = $row["telephone"];
@@ -137,7 +138,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $nombre_signature = $row["nombre_signature"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
-                    header("location: error.php");
+                    header("location: errorDut1.php");
                     exit();
                 }
                 
@@ -153,7 +154,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         unset($pdo);
     }  else{
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
+        header("location: errorDut1.php");
         exit();
     }
 }
@@ -194,6 +195,16 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <label>Username</label>
                             <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                             <span class="invalid-feedback"><?php echo $username_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Telephone</label>
+                            <input type="telephone" name="telephone" class="form-control <?php echo (!empty($telephone_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $telephone; ?>">
+                            <span class="invalid-feedback"><?php echo $telephone_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Mot de passe</label>
+                            <input type="password" name="mot_de_passe" class="form-control <?php echo (!empty($mot_de_passe_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $mot_de_passe; ?>">
+                            <span class="invalid-feedback"><?php echo $mot_de_passe_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Nombre de signature</label>

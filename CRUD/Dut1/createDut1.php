@@ -8,6 +8,7 @@ $nom_err = $prenom_err = $username_err = $telephone_err = $nbre_signature_err = 
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+
     // Valider nom
     $input_nom = trim($_POST["nom"]);
     if(empty($input_nom)){
@@ -33,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($input_username)){
         $username_err = "Please enter a username.";
     } elseif(!filter_var($input_username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $username_err = "Please enter a valid name.";
+        $username_err = "Please enter a valid username.";
     } else{
         $username = $input_username;
     }
@@ -49,11 +50,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //Valider mot de passe
     $input_password = trim($_POST["mot_de_passe"]);
     if(empty($password)){
-        $username_err = "Please enter a password";
+        $password_err = "Please enter a password";
     } elseif(!filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
         $password_err = "Please enter a valid password.";
     } else{
-        $password = $input_password;
+        $password = hash($input_password);
     }
 
 
@@ -64,13 +65,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } elseif(!ctype_digit($input_nombre_signature)){
         $nombre_signature_err = "Please enter a positive integer value.";
     } else{
-        $nombre_signature = hash($input_nombre_signature);
+        $nombre_signature = $input_nombre_signature;
     }
     
     // Check input errors before inserting in database
-    if(empty($nom_err) && empty($prenom_err) && empty($username_err) && empty($telephone_err) && empty($nombre_signature_err)){
+    if(empty($nom_err) && empty($prenom_err) && empty($username_err) && empty($password) && empty($telephone_err) && empty($nombre_signature_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO dut1 (nom, prenom, username, telephone, mot_de_passe, nombre_signature) VALUES (:nom, :prenom, :username, :telephone, :mot_de_passe, :nombre_signature";
+        $sql = "INSERT INTO dut1 (nom, prenom, username, telephone, mot_de_passe, nombre_signature) VALUES (?, ?, ?, ?, ?, ?)";
  
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -91,7 +92,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             
             // Attempt to execute the prepared statement
-            if($stmt->execute()){
+            if($stmt->execute([$nom, $prenom, $username, $telephone, $password, $nombre_signature])){
                 // Records created successfully. Redirect to landing page liste dut1
                 header("location: listeDut1.php");
                 exit();
