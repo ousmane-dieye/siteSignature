@@ -47,8 +47,8 @@
                                         echo "<th>Name</th>";
                                         echo "<th>Prenom</th>";
                                         echo "<th>Username</th>";
-                                        echo "<th>Telephone</th>";
-                                        echo "<th>Niveau</th>";
+                                        // echo "<th>Telephone</th>";
+                                        // echo "<th>Niveau</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -58,8 +58,8 @@
                                         echo "<td>" . $row['nom'] . "</td>";
                                         echo "<td>" . $row['prenom'] . "</td>";
                                         echo "<td>" . $row['username'] . "</td>";
-                                        echo "<td>" . $row['telephone'] . "</td>";
-                                        echo "<td>" . $row['niveau'] . "</td>";
+                                        // echo "<td>" . $row['telephone'] . "</td>";
+                                        // echo "<td>" . $row['niveau'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="readMameDut2.php?id='. $row['id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
                                             echo '<a href="updateMameDut2.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
