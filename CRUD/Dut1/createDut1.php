@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Valider username
     $input_username = trim($_POST["username"]);
     if(empty($input_username)){
-        $username_err = "Please enter a name.";
+        $username_err = "Please enter a username.";
     } elseif(!filter_var($input_username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
         $username_err = "Please enter a valid name.";
     } else{
