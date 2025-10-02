@@ -95,7 +95,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <label>Niveau</label>
                         <p><b><?php echo $row["niveau"]; ?></b></p>
                     </div>
-                    <p><a href="listeDut1.php" class="btn btn-primary">Back</a></p>
+                    <p><a href="listeMameDut2.php" class="btn btn-primary">Back</a></p>
                 </div>
             </div>        
         </div>
