@@ -34,7 +34,7 @@
                     </div>
                     <?php
                     // Include config file
-                    require "../db.php";
+                    require "../../db.php";
                     
                     // Attempt select query execution
                     $sql = "SELECT * FROM parrainmarrainemame";

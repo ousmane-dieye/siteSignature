@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require "../../db.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM dut1 WHERE id = :id";
+    $sql = "SELECT * FROM parrainmarrainemame WHERE id = :id";
     
     if($stmt = $pdo->prepare($sql)){
         // Bind variables to the prepared statement as parameters
@@ -28,9 +28,10 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $telephone = $row["telephone"];
                 $password = $row["mot_de_passe"];
                 $niveau = $row["niveau"];
+
             }else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: errorMameDut2php");
                 exit();
             }
             
@@ -46,7 +47,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     unset($pdo);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: errorMameDut2.php");
     exit();
 }
 ?>
@@ -94,7 +95,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <label>Niveau</label>
                         <p><b><?php echo $row["niveau"]; ?></b></p>
                     </div>
-                    <p><a href="listeDut2.php" class="btn btn-primary">Back</a></p>
+                    <p><a href="listeDut1.php" class="btn btn-primary">Back</a></p>
                 </div>
             </div>        
         </div>

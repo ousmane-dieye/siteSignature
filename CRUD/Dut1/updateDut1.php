@@ -51,14 +51,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     } 
 
     // Valider mot de passe
-    $input_mot_de_passe = trim($_POST["mot_de_passe"]);
-    if(empty($mot_de_passe)){
-        $mot_de_passe_err = "Please enter a mot_de_passe";
-    } elseif(!filter_var($mot_de_passe, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $mot_de_passe_err = "Please enter a valid mot_de_passe.";
-    } else{
-        $mot_de_passe = $input_mot_de_passe;
-    }
+    // $input_mot_de_passe = trim($_POST["mot_de_passe"]);
+    // if(empty($mot_de_passe)){
+    //     $mot_de_passe_err = "Please enter a mot_de_passe";
+    // } elseif(!filter_var($mot_de_passe, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+    //     $mot_de_passe_err = "Please enter a valid mot_de_passe.";
+    // } else{
+    //     $mot_de_passe = $input_mot_de_passe;
+    // }
 
     // Valider nombre de signature
     $input_nombre_signature = trim($_POST["nombre_signature"]);
@@ -71,9 +71,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($prenom_err) && empty($username_err) && empty($telephone_err) && empty($mot_de_passe_err) && empty($nombre_signature_err)){
+    if(empty($name_err) && empty($prenom_err) && empty($username_err) && empty($telephone_err) && empty($nombre_signature_err)){
         // Prepare an update statement
-        $sql = "UPDATE du1 SET nom=:nom, prenom=:prenom, username=:username, telephone=:telephone, mot_de_passe=:mot_de_passe,  WHERE id=:id";
+        $sql = "UPDATE du1 SET nom=:nom, prenom=:prenom, username=:username, telephone=:telephone, nombre_signature=:nombre_signature  WHERE id=:id";
  
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -81,14 +81,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $stmt->bindParam(":prenom", $param_prenom);
             $stmt->bindParam(":username", $param_username);
             $stmt->bindParam(":telephone", $param_telephone);
-            $stmt->bindParam(":mot_de_passe", $param_mot_de_passe);
+            // $stmt->bindParam(":mot_de_passe", $param_mot_de_passe);
              $stmt->bindParam(":nombre_signature", $param_nombre_signature);
             // Set parameters
             $param_name = $name;
             $param_prenom = $prenom;
             $param_username = $username;
             $param_telephone = $telephone;
-            $param_mot_de_passe = $mot_de_passe; 
+            // $param_mot_de_passe = $mot_de_passe; 
             $param_nombre_signature = $nombre_signature;
             
             // Attempt to execute the prepared statement
@@ -134,7 +134,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $prenom = $row["prenom"];
                     $username = $row["username"];
                     $telephone = $row["telephone"];
-                    $mot_de_passe = $row["mot_de_passe"];
+                    // $mot_de_passe = $row["mot_de_passe"];
                     $nombre_signature = $row["nombre_signature"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
