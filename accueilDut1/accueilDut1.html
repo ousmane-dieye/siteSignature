@@ -1,49 +1,3 @@
-<?php
-session_start();
-require '../db.php';
-
-// Vérifier si le user est connecté
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../connexionDut1/connexionDut1.php");
-    exit();
-}
-
-// Recuperer informations wou Dayté1 connecté
-$user_id = $_SESSION['user_id'];
-$stmt = $pdo->prepare("SELECT * FROM dut1 WHERE id = ?");
-$stmt->execute([$user_id]);
-$userData = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (!$userData) {
-    echo "Utilisateur non trouvé";
-    exit();
-}
-
-// recuperr le nombre de signatures
-$stmt = $pdo->prepare("SELECT COUNT(*) as signature_count FROM signature WHERE id_dut1 = ?");
-$stmt->execute([$user_id]);
-$signatureData = $stmt->fetch(PDO::FETCH_ASSOC);
-$signatureCount = $signatureData['signature_count'];
-
-// recuperer listou signataires yii
-$validUsersStmt = $pdo->prepare("SELECT username FROM parrainmarrainemame");
-$validUsersStmt->execute();
-$validUsers = $validUsersStmt->fetchAll(PDO::FETCH_COLUMN);
-
-// recuperer les signatures recues
-$receivedStmt = $pdo->prepare("
-    SELECT pm.username 
-    FROM signature s 
-    JOIN parrainmarrainemame pm ON s.id_Mame = pm.id 
-    WHERE s.id_dut1 = ?
-");
-$receivedStmt->execute([$user_id]);
-$receivedSignatures = $receivedStmt->fetchAll(PDO::FETCH_COLUMN);
-
-$targetSignatures = 100;
-$progressPercentage = ($signatureCount / $targetSignatures) * 100;
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -58,11 +12,11 @@ $progressPercentage = ($signatureCount / $targetSignatures) * 100;
         <header class="header">
             <div class="user-info">
                 <div class="user-avatar">
-                    <img src="<?php echo htmlspecialchars($userData['photo'] ?? 'https://via.placeholder.com/150'); ?>" alt="Photo de l'utilisateur" id="user-photo">
+                    <img src="https://via.placeholder.com/150" alt="Photo de l'utilisateur" id="user-photo">
                 </div>
                 <div class="user-text">
                     <h2>Heureux de vous revoir,</h2>
-                    <h1 id="user-name"><?php echo htmlspecialchars($userData['prenom'] . ' ' . $userData['nom']); ?></h1>
+                    <h1 id="user-name">Nom Prénom</h1>
                 </div>
             </div>
              <a href="deconnexion.php" class="logout-btn" title="Déconnexion">
@@ -80,18 +34,18 @@ $progressPercentage = ($signatureCount / $targetSignatures) * 100;
 
                 <div class="stats-section">
                     <div class="stat-card">
-                        <div class="stat-number" id="signature-count"><?php echo $signatureCount; ?></div>
+                        <div class="stat-number" id="signature-count">0</div>
                         <div class="stat-label">Signatures reçues</div>
                     </div>
                     
                     <div class="progress-card">
                         <h3>PROGRESSION</h3>
                         <div class="progress-bar">
-                            <div class="progress-fill" id="progress-fill" style="width: <?php echo min($progressPercentage, 100); ?>%"></div>
+                            <div class="progress-fill" id="progress-fill"></div>
                         </div>
                         <div class="progress-text">
-                            <span id="current-signatures"><?php echo $signatureCount; ?></span>
-                            <span id="target-signatures">/ <?php echo $targetSignatures; ?> signatures</span>
+                            <span id="current-signatures">0</span>
+                            <span id="target-signatures">/ 100 signatures</span>
                         </div>
                     </div>
                 </div>
@@ -101,11 +55,11 @@ $progressPercentage = ($signatureCount / $targetSignatures) * 100;
                     <div class="info-grid">
                         <div class="info-item">
                             <span class="info-label">Nom d'utilisateur</span>
-                            <span class="info-value" id="username"><?php echo htmlspecialchars($userData['username']); ?></span>
+                            <span class="info-value" id="username">utilisateur123</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Téléphone</span>
-                            <span class="info-value" id="phone"><?php echo htmlspecialchars($userData['telephone']); ?></span>
+                            <span class="info-value" id="phone">+33 6 12 34 56 78</span>
                         </div>
                     </div>
                 </div>
@@ -115,7 +69,7 @@ $progressPercentage = ($signatureCount / $targetSignatures) * 100;
                         <i class="fas fa-signature"></i>
                         SE FAIRE SIGNER
                     </button>
-                    <a href="signatures.php" class="btn-secondary">
+                    <a href="signatures.html" class="btn-secondary">
                         <i class="fas fa-list"></i>
                         VOIR MES SIGNATURES
                     </a>
@@ -124,8 +78,7 @@ $progressPercentage = ($signatureCount / $targetSignatures) * 100;
         </div>
     </div>
 
- 
-<div class="modal" id="signature-modal">
+    <div class="modal" id="signature-modal">
     <div class="modal-content">
         <div class="modal-header">
             <h2>OBTENIR UNE SIGNATURE</h2>
@@ -153,11 +106,7 @@ $progressPercentage = ($signatureCount / $targetSignatures) * 100;
     </div>
 </div>
 
-    <script>
-        // donner les donnees a js
-        const validUsers = <?php echo json_encode($validUsers); ?>;
-        const receivedSignatures = <?php echo json_encode($receivedSignatures); ?>;
-    </script>
+
     <script src="accueilDut1.js"></script>
 </body>
 </html>
