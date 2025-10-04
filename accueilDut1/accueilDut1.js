@@ -13,7 +13,9 @@ const successMessage = document.getElementById('success-message');
 const signatureForm = document.getElementById('signature-form');
 const themeToggle = document.getElementById('theme-toggle');
 
+// ---------------------------
 // Gestion du thème
+// ---------------------------
 function initTheme() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -62,11 +64,7 @@ const validateSignatureInfo = (username, telephone) => {
     if (!username || !telephone) {
         return { isValid: false, message: 'Veuillez remplir tous les champs' };
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> b667f0d (modil moha)
     const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
     if (!phoneRegex.test(telephone)) {
         return { isValid: false, message: 'Format de téléphone invalide' };
@@ -90,17 +88,6 @@ const handleFormSubmit = async (event) => {
         usernameError.style.display = 'block';
         return;
     }
-<<<<<<< HEAD
-    
-    const formData = new FormData(signatureForm);
-    
-    fetch('traiter_signature.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(result => {
-=======
 
     try {
         const formData = new FormData(signatureForm);
@@ -110,20 +97,14 @@ const handleFormSubmit = async (event) => {
         });
         const result = await response.text();
 
->>>>>>> b667f0d (modil moha)
         if (result.startsWith('success:')) {
             usernameError.style.display = 'none';
             successMessage.textContent = result.replace('success:', '');
             successMessage.style.display = 'block';
-<<<<<<< HEAD
-            
+
             setTimeout(() => {
                 window.location.reload();
             }, 2000);
-=======
-
-            setTimeout(() => window.location.reload(), 1500);
->>>>>>> b667f0d (modil moha)
         } else if (result.startsWith('error:')) {
             usernameError.textContent = result.replace('error:', '');
             usernameError.style.display = 'block';
@@ -137,28 +118,24 @@ const handleFormSubmit = async (event) => {
 
 // ---------------------------
 // Initialisation
-<<<<<<< HEAD
+// ---------------------------
 function initApp() {
     // Initialiser le thème
     initTheme();
-    
+
     // Événements
     themeToggle.addEventListener('click', toggleTheme);
-=======
-// ---------------------------
-const initApp = () => {
->>>>>>> b667f0d (modil moha)
     getSignatureBtn.addEventListener('click', openSignatureModal);
     closeModalBtn.addEventListener('click', closeSignatureModal);
     signatureForm.addEventListener('submit', handleFormSubmit);
 
     window.addEventListener('click', (event) => {
-        if (event.target === signatureModal) closeSinatureModal();
+        if (event.target === signatureModal) closeSignatureModal();
     });
 
     usernameInput.addEventListener('input', () => usernameError.style.display = 'none');
     phoneInput.addEventListener('input', () => usernameError.style.display = 'none');
-};
+}
 
 // ---------------------------
 // Démarrer l'appli

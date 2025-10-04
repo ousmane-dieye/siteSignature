@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-/* Fichier: signatures.css */
-:root {
-    --primary-color: #00d4ff;       /* Bleu néon principal */
-    --secondary-color: #0090ff;     /* Bleu plus profond */
-    --accent-color: #33cfff;        /* Bleu clair / accent */
-    --background-color: #0a1a2a;    /* Fond sombre mais plus lumineux */
-    --card-color: #112a44;          /* Fond des cartes */
-    --text-primary: #e0e0e0;        /* Texte clair */
-    --text-secondary: #a0c4ff;      /* Texte secondaire */
-    --border-color: #225588;        /* Bordures légères */
-    --glow: 0 0 10px rgba(0,212,255,0.7);
-=======
 /* VARIABLES DE COULEURS */
 :root {
     --primary-color: #2c3e50;
@@ -26,10 +13,8 @@
     --text-primary: #2c3e50;
     --text-secondary: #7f8c8d;
     --border-color: #bdc3c7;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
 }
 
-<<<<<<< HEAD
 [data-theme="dark"] {
     --primary-color: #ecf0f1;
     --secondary-color: #bdc3c7;
@@ -46,37 +31,18 @@
     --border-color: #4a6572;
 }
 
-<<<<<<< HEAD
-=======
-/* Reset général */
->>>>>>> b667f0d (modil moha)
-=======
 /* RESET + BASE */
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'JetBrains Mono', 'Segoe UI', monospace;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* Fond animé paillettes bleues */
 body {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    background: linear-gradient(270deg, #00aad4, #004a76);
-    background-size: 200% 200%;
-    animation: gradientShift 5s ease infinite;
-=======
-    background: linear-gradient(45deg, #001a33, #003366, #0055aa, #0090ff);
-    background-size: 400% 400%;
-    animation: gradientParticles 20s ease infinite;
->>>>>>> b667f0d (modil moha)
-=======
     background: linear-gradient(270deg, var(--background-start), var(--background-end));
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
     color: var(--text-primary);
     line-height: 1.6;
     transition: all 0.5s ease;
@@ -116,23 +82,9 @@ body {
     box-shadow: 0 0 12px var(--accent-color);
 }
 
-<<<<<<< HEAD
-@keyframes gradientParticles {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Container */
-=======
 /* CONTAINER */
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
 .container {
-<<<<<<< HEAD
     width: 80%;
-=======
-    max-width: 900px;
->>>>>>> b667f0d (modil moha)
     margin: 0 auto;
     padding: 20px;
     flex: 1;
@@ -140,15 +92,6 @@ body {
     flex-direction: column;
 }
 
-<<<<<<< HEAD
-/* Header */
-.header {
-    background-color: var(--card-color);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,212,255,0.3);
-    margin-bottom: 25px;
-=======
 /* HEADER */
 .header {
     background-color: var(--card-color);
@@ -157,32 +100,24 @@ body {
     box-shadow: 0 0 12px var(--card-shadow); /* neon glow discret */
     margin-bottom: 20px;
     transition: all 0.5s ease;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
 }
 
 .user-info {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .user-avatar {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #00d4ff, #0090ff);
+    background-color: var(--accent-color);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border: 2px solid var(--accent-color);
-    box-shadow: var(--glow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.user-avatar:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px #00d4ff, 0 0 30px #0090ff;
+    border: 3px solid var(--accent-color);
 }
 
 .user-avatar img {
@@ -192,31 +127,23 @@ body {
 }
 
 .user-text h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-secondary);
     font-weight: 400;
+    margin-bottom: 5px;
 }
 
 .user-text h1 {
-    font-size: 2rem;
-    color: var(--primary-color);
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
-<<<<<<< HEAD
-/* Main content */
-.main-content {
-    background-color: rgba(17, 42, 68, 0.85); /* semi-transparent pour laisser passer le fond */
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,212,255,0.3);
-=======
 /* MAIN CONTENT */
 .main-content {
     background-color: var(--card-color);
     border-radius: 8px;
     box-shadow: 0 0 15px var(--card-shadow); /* neon glow discret */
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
     overflow: hidden;
     flex: 1;
     display: flex;
@@ -226,17 +153,11 @@ body {
 }
 
 .content-card {
-<<<<<<< HEAD
     padding: 30px;
     flex: 1;
     display: flex;
     flex-direction: column;
     width: 100%;
-<<<<<<< HEAD
-=======
-    padding: 35px;
->>>>>>> b667f0d (modil moha)
-=======
     box-shadow: 0 0 12px var(--card-shadow); /* neon glow discret */
     transition: all 0.3s ease;
 }
@@ -250,7 +171,6 @@ body {
     0% { box-shadow: 0 0 12px var(--card-shadow); }
     50% { box-shadow: 0 0 22px var(--card-shadow); }
     100% { box-shadow: 0 0 12px var(--card-shadow); }
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
 }
 
 .card-header {
@@ -261,19 +181,12 @@ body {
 }
 
 .card-header h2 {
-<<<<<<< HEAD
     font-size: 1.8rem;
     color: var(--primary-color);
     font-weight: 600;
     margin-bottom: 10px;
-=======
-    font-size: 1.6rem;
-    color: var(--primary-color);
-    font-weight: 700;
->>>>>>> b667f0d (modil moha)
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 5px #00d4ff, 0 0 10px #0090ff;
+    letter-spacing: 1px;
 }
 
 .card-header p {
@@ -281,13 +194,7 @@ body {
     font-size: 1.2rem;
 }
 
-<<<<<<< HEAD
-/* Actions / boutons */
-=======
-
-
 /* ACTION BUTTONS */
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
 .actions-section {
     display: flex;
     flex-direction: column;
@@ -295,16 +202,9 @@ body {
     margin-top: 30px;
 }
 
-<<<<<<< HEAD
-.btn-primary, .btn-secondary, .btn-back {
-    padding: 15px 25px;
-    border: none;
-    border-radius: 10px;
-=======
 .btn-primary, .btn-secondary, .whatsapp-btn {
     padding: 15px 25px;
     border-radius: 6px;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
@@ -314,21 +214,6 @@ body {
     gap: 10px;
     text-decoration: none;
     text-transform: uppercase;
-<<<<<<< HEAD
-    letter-spacing: 1px;
-}
-
-/* Bouton principal */
-.btn-primary {
-    background: linear-gradient(135deg, #00d4ff, #0090ff);
-    color: var(--background-color);
-    box-shadow: 0 0 15px #00d4ff, 0 0 25px #0090ff;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 20px #00d4ff, 0 0 30px #0090ff, 0 0 40px #33cfff;
-=======
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
 }
@@ -343,7 +228,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Bouton secondaire */
 .btn-secondary {
     background-color: transparent;
     color: var(--accent-color);
@@ -351,34 +235,9 @@ body {
 }
 
 .btn-secondary:hover {
-    background: linear-gradient(135deg, #00d4ff, #0090ff);
-    color: var(--background-color);
-    box-shadow: 0 0 15px #00d4ff, 0 0 25px #0090ff;
+    background-color: var(--accent-color);
+    color: white;
 }
-
-/* GRID POUR SIGNATAIRES - RÉDUIT */
-.signatures-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px; /* Espacement réduit */
-
-/* Bouton retour */
-.btn-back {
-    background: linear-gradient(135deg, #0090ff, #00d4ff);
-    color: var(--background-color);
-    box-shadow: 0 0 10px #00d4ff, 0 0 20px #0090ff;
-}
-
-.btn-back:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 0 15px #00d4ff, 0 0 25px #0090ff, 0 0 35px #33cfff;
-}
-
-/* Liste de signatures / items */
-.signatures-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 
 .whatsapp-btn {
     background-color: #25D366;
@@ -408,69 +267,31 @@ body {
 .signature-item {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacement réduit */
-    padding: 15px; /* Padding réduit */
-    background-color: #f8f9fa;
-
     gap: 15px;
     padding: 15px;
     background-color: var(--card-color);
-
     border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 0 12px var(--card-shadow); /* neon glow discret */
     transition: all 0.3s ease;
-
-    min-height: 120px; /* Hauteur réduite */
-    max-width: 100%; /* Ne dépasse pas le container */
-    overflow: hidden;
-}
-
-[data-theme="dark"] .signature-item {
-    background-color: #2c3e50;
-
-    gap: 20px;
-    padding: 20px;
-    background-color: rgba(17, 42, 68, 0.85); /* harmonisation avec fond */
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0,212,255,0.3);
->>>>>>> b667f0d (modil moha)
-}
-
-.signature-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px #00d4ff, 0 0 25px #0090ff;
-=======
     min-height: 120px;
 }
 
 .signature-item:hover {
     animation: cardGlowPulse 0.6s ease forwards;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
 }
 
 .signature-avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #00d4ff, #0090ff);
+    background: linear-gradient(135deg, var(--accent-color), #2980b9);
     display: flex;
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
     color: white;
-<<<<<<< HEAD
-    font-size: 1.3rem; /* Réduit */
-=======
-    color: var(--background-color);
-    font-size: 1.5rem;
->>>>>>> b667f0d (modil moha)
-=======
     font-size: 1.3rem;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
     flex-shrink: 0;
-    box-shadow: var(--glow);
 }
 
 .signature-details {
@@ -480,25 +301,13 @@ body {
 }
 
 .signature-details h3 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    font-size: 1.1rem; /* Réduit */
-=======
     font-size: 1.1rem;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
     color: var(--text-primary);
     margin-bottom: 8px;
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-=======
-    font-size: 1.3rem;
-    color: var(--primary-color);
-    margin-bottom: 8px;
-    font-weight: 600;
-    text-shadow: 0 0 3px #00d4ff;
->>>>>>> b667f0d (modil moha)
 }
 
 .signature-info {
@@ -526,50 +335,6 @@ body {
     flex: 1;
 }
 
-<<<<<<< HEAD
-/* WhatsApp bouton */
-.whatsapp-btn {
-    background-color: #25D366;
-    color: white;
-<<<<<<< HEAD
-    padding: 8px 12px; /* Réduit */
-    border-radius: 6px;
-=======
-    padding: 12px 20px;
-    border-radius: 8px;
->>>>>>> b667f0d (modil moha)
-    text-decoration: none;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Réduit */
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    text-transform: uppercase;
-<<<<<<< HEAD
-    letter-spacing: 0.5px;
-    font-size: 0.75rem; /* Réduit */
-    white-space: nowrap;
-=======
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-    box-shadow: 0 0 10px #25D366;
->>>>>>> b667f0d (modil moha)
-}
-
-.whatsapp-btn:hover {
-    background-color: #128C7E;
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 0 15px #25D366, 0 0 25px #00d4ff;
-}
-
-/* Empty state */
-.empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-secondary);
-    flex: 1;
-=======
 body {
     background: linear-gradient(270deg, var(--background-start), var(--background-end));
     background-size: 400% 400%;
@@ -578,7 +343,6 @@ body {
     line-height: 1.6;
     transition: all 0.5s ease;
     min-height: 100vh;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
     display: flex;
     flex-direction: column;
 }
@@ -590,22 +354,11 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-<<<<<<< HEAD
-.empty-state h3 {
-<<<<<<< HEAD
-    margin-bottom: 15px;
-    color: var(--text-primary);
-    font-size: 1.8rem;
-=======
-    margin-bottom: 10px;
-    color: var(--primary-color);
-    text-shadow: 0 0 3px #00d4ff;
->>>>>>> b667f0d (modil moha)
-=======
+
+
 /* PULSE LÉGER SUR CARTE AU SURVOL */
 .content-card:hover, .signature-item:hover {
     animation: cardGlowPulse 0.6s ease forwards;
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
 }
 
 @keyframes cardGlowPulse {
@@ -614,144 +367,4 @@ body {
     100% { box-shadow: 0 0 12px var(--card-shadow); transform: scale(1); }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* RESPONSIVE DESIGN */
-=======
-/* Responsive */
->>>>>>> b667f0d (modil moha)
-@media (max-width: 768px) {
-    .container {
-        width: 90%;
-        padding: 15px;
-    }
-    
-    .theme-toggle {
-        top: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-    }
-    
-    .header {
-        padding: 20px;
-    }
-    
-    .user-info {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-    
-    .content-card {
-        padding: 25px;
-    }
-    
-    .signatures-list {
-        grid-template-columns: 1fr; /* 1 colonne sur mobile */
-        gap: 12px;
-    }
-    
-    .signature-item {
-        padding: 12px;
-        min-height: 110px; /* Encore plus réduit sur mobile */
-    }
-    
-    .signature-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
-    }
-    
-    .card-header {
-        margin-bottom: 25px;
-        padding-bottom: 15px;
-    }
-    
-    .card-header h2 {
-        font-size: 1.6rem;
-    }
-    
-    .card-header p {
-        font-size: 1.1rem;
-    }
-    
-    .signature-details h3 {
-        font-size: 1rem;
-    }
-    
-    .signature-info .info-label {
-        min-width: 90px;
-        font-size: 0.75rem;
-    }
-    
-    .signature-info .info-value {
-        font-size: 0.75rem;
-    }
-}
-
-/* Pour les très petits écrans */
-@media (max-width: 480px) {
-    .container {
-        width: 95%;
-        padding: 10px;
-    }
-    
-    .content-card {
-        padding: 20px;
-    }
-    
-    .signature-item {
-        padding: 10px;
-        min-height: 100px;
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-    
-    .signature-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
-    }
-    
-    .signature-info .info-label {
-        min-width: auto;
-        font-size: 0.7rem;
-    }
-<<<<<<< HEAD
-    
-    .signature-info .info-value {
-        font-size: 0.7rem;
-    }
-    
-    .whatsapp-btn {
-=======
-
-    .whatsapp-btn, .btn-back {
->>>>>>> b667f0d (modil moha)
-        width: 100%;
-        justify-content: center;
-        padding: 10px;
-    }
-}
-
-/* Pour les grands écrans */
-@media (min-width: 1200px) {
-    .container {
-        width: 80%;
-        max-width: 1400px;
-    }
-    
-    .signatures-list {
-        gap: 20px; /* Un peu plus d'espace sur grand écran */
-    }
-    
-    .signature-item {
-        min-height: 130px; /* Un peu plus haut sur grand écran */
-    }
-}
-=======
-
 /* RESPONSIVE DESIGN reste identique au code initial */
->>>>>>> ba46fa7 (modif page signature et page d'accueil)
