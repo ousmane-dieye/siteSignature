@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
      // Valider prenom
-    $input_prenom = trim($_POST["nom"]);
+    $input_prenom = trim($_POST["prenom"]);
     if(empty($input_prenom)){
         $prenom_err = "Please enter a prenom.";
     } elseif(!filter_var($input_prenom, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
@@ -49,12 +49,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     //Valider mot de passe
     $input_password = trim($_POST["mot_de_passe"]);
-    if(empty($password)){
+    if(empty($input_password)){
         $password_err = "Please enter a password";
-    } elseif(!filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+    } elseif(!filter_var($input_password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp" => "/^.{5,}$/")))){
         $password_err = "Please enter a valid password.";
     } else{
-        $password = hash($input_password);
+        $password = password_hash($input_password, PASSWORD_BCRYPT);
     }
 
 
@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Check input errors before inserting in database
-    if(empty($nom_err) && empty($prenom_err) && empty($username_err) && empty($password) && empty($telephone_err) && empty($nombre_signature_err)){
+    if(empty($nom_err) && empty($prenom_err) && empty($username_err) && empty($password_err) && empty($telephone_err) && empty($nombre_signature_err)){
         // Prepare an insert statement
         $sql = "INSERT INTO dut1 (nom, prenom, username, telephone, mot_de_passe, nombre_signature) VALUES (?, ?, ?, ?, ?, ?)";
  
