@@ -45,12 +45,12 @@ body {
    background: linear-gradient(270deg, #00aad4, #004a76);
    background-size: 200% 200%;
    animation: gradientShift 5s ease infinite;
-    color: var(--text-primary);
-    line-height: 1.4;
-    transition: all 0.3s ease;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+   color: var(--text-primary);
+   line-height: 1.4;
+   transition: all 0.3s ease;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
 }
 
 [data-theme="dark"] body {
@@ -108,17 +108,21 @@ body::before {
 }
 
 .container {
-    width: 80%; /* 80% de largeur */
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     min-height: 100vh; /* Prend toute la hauteur */
 =======
 @keyframes matrixFlow {
   from { transform: translateY(0); }
   to { transform: translateY(100px); }
+=======
+    min-height: 100vh;
+>>>>>>> ba46fa7 (modif page signature et page d'accueil)
 }
 
 /* STRUCTURE */
@@ -300,6 +304,7 @@ body::before {
     flex-direction: column;
     justify-content: center;
     min-height: 140px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stat-number {
@@ -324,6 +329,7 @@ body::before {
     flex-direction: column;
     justify-content: center;
     min-height: 140px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ranking-card h3 {
@@ -353,6 +359,7 @@ body::before {
     border-radius: 8px;
     border-left: 4px solid var(--accent-color);
     margin-top: auto;
+    transition: box-shadow 0.3s ease;
 }
 
 [data-theme="dark"] .ranking-message {
@@ -482,6 +489,7 @@ body::before {
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 [data-theme="dark"] .user-info-card {
@@ -665,6 +673,7 @@ body::before {
     box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
+/* Messages */
 .error-message {
     color: var(--error-color);
     font-size: 0.9rem;
@@ -681,7 +690,7 @@ body::before {
     font-weight: 600;
 }
 
-/* RESPONSIVE DESIGN - MOBILE */
+/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
     .container {
         width: 90%;
@@ -767,14 +776,62 @@ body::before {
     }
 }
 
-/* Pour les très grands écrans */
 @media (min-width: 1200px) {
     .container {
         width: 80%;
         max-width: 1400px;
     }
+<<<<<<< HEAD
 =======
   background: var(--accent-color);
   color: white;
 >>>>>>> b667f0d (modil moha)
 }
+=======
+}
+
+
+/* Animation de la croix du modal */
+.close-modal {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--error-color);
+    transform: rotate(90deg) scale(1.2); /* Rotation + léger agrandissement */
+}
+
+/* Pulse subtil du modal */
+.modal-content {
+    background-color: var(--card-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.1); /* plus subtil que avant */
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    margin: 20px;
+    transition: box-shadow 0.6s ease, transform 0.6s ease;
+}
+
+.modal-content:hover {
+    box-shadow: 0 6px 25px rgba(52, 152, 219, 0.15); /* pulse léger */
+    transform: translateY(-2px); /* léger mouvement pour dynamisme */
+}
+
+/* Animation keyframes optionnelle pour pulse continu très subtil */
+@keyframes subtlePulse {
+    0% { box-shadow: 0 4px 20px rgba(52, 152, 219, 0.1); }
+    50% { box-shadow: 0 6px 25px rgba(52, 152, 219, 0.15); }
+    100% { box-shadow: 0 4px 20px rgba(52, 152, 219, 0.1); }
+}
+
+.modal-content {
+    animation: subtlePulse 3s infinite ease-in-out;
+}
+
+>>>>>>> ba46fa7 (modif page signature et page d'accueil)
