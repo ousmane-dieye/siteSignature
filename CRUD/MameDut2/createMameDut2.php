@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
      // Valider prenom
-    $input_prenom = trim($_POST["nom"]);
+    $input_prenom = trim($_POST["prenom"]);
     if(empty($input_prenom)){
         $prenom_err = "Please enter a prenom.";
     } elseif(!filter_var($input_prenom, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
@@ -48,12 +48,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     //Valider mot de passe
     $input_password = trim($_POST["mot_de_passe"]);
-    if(empty($password)){
-        $username_err = "Please enter a password";
-    } elseif(!filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+    if(empty($input_password)){
+        $password_err = "Please enter a password";
+    } elseif(!filter_var($input_password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp" => "/^.{5,}$/")))){
         $password_err = "Please enter a valid password.";
     } else{
-        $password = $input_password;
+        $password = password_hash($input_password, PASSWORD_BCRYPT);
     }
 
 
@@ -61,54 +61,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_niveau = trim($_POST["niveau"]);
     if(empty($input_niveau)){
         $niveau_err = "Please enter the niveau.";     
-    } elseif(!ctype_digit($input_niveau)){
-        $niveau_err = "Please enter a positive integer value.";
     } else{
-        $niveau = hash($input_niveau);
+        $niveau = $input_niveau;
     }
     
     // Check input errors before inserting in database
     if(empty($nom_err) && empty($prenom_err) && empty($username_err) && empty($telephone_err) && empty($niveau_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO dut1 (nom, prenom, username, telephone, mot_de_passe, niveau) VALUES (:nom, :prenom, :username, :telephone, :mot_de_passe, :niveau";
- 
-        if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":nom", $param_nom);
-            $stmt->bindParam(":prenom", $param_prenom);
-            $stmt->bindParam(":username", $param_username);
-            $stmt->bindParam(":mot_de_passe", $param_password);
-            $stmt->bindParam(":telephone", $param_telephone);
-            $stmt->bindParam(":niveau", $param_niveau);
-            
-            // Set parameters
-            $param_nom = $nom;
-            $param_prenom = $prenom;
-            $param_username = $username;
-            $param_password = $password;
-            $param_telephone = $telephone;
-            $param_niveau = $niveau;
-
-            
-            // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                // Records created successfully. Redirect to landing page liste dut1
-                header("location: listeMameDut2.php");
-                exit();
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+        $sql = "INSERT INTO parrainmarrainemame (nom, prenom, username, telephone, mot_de_passe, niveau) VALUES (:nom, :prenom, :username, :telephone, :mot_de_passe, :niveau)";
+        $stmt = $pdo->prepare($sql);
+        if($stmt->execute([
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':username' => $username,
+            ':mot_de_passe' => $password,
+            ':telephone' => $telephone,
+            ':niveau' => $niveau,
+        ])){
+            header("location: listeMameDut2.php");
+            exit();
+        } else {
+            echo "Oops! Something went wrong. Please try again later.";
         }
-         
-        // Close statement
-        unset($stmt);
     }
-    
-    // Close connection
-    unset($pdo);
 }
 ?>
- 
+        
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -158,10 +136,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="invalid-feedback"><?php echo $password_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Nombre de signature</label>
-                            <input type="number" name="niveau" class="form-control <?php echo (!empty($niveau_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $niveau; ?>">
+                            <label>Niveau</label><br>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="niveau" value="parrain" class="form-check-input" <?php echo ($niveau == "parrain") ? 'checked' : ''; ?>>
+                                <label class="form-check-label">Parrain/Marraine</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="niveau" value="mame_1" class="form-check-input" <?php echo ($niveau == "mame_1") ? 'checked' : ''; ?>>
+                                <label class="form-check-label">Mame 1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="niveau" value="mame_2" class="form-check-input" <?php echo ($niveau == "mame_2") ? 'checked' : ''; ?>>
+                                <label class="form-check-label">Mame 2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" name="niveau" value="mame_3" class="form-check-input" <?php echo ($niveau == "mame_3") ? 'checked' : ''; ?>>
+                                <label class="form-check-label">Mame 3</label>
+                            </div>
                             <span class="invalid-feedback"><?php echo $niveau_err;?></span>
                         </div>
+
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>
