@@ -1,17 +1,23 @@
+<<<<<<< HEAD
 /* Fichier: accueilDut1.css */
+=======
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+>>>>>>> b667f0d (modil moha)
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
-    --accent-color: #3498db;
-    --background-color: #ecf0f1;
-    --card-color: #ffffff;
-    --text-primary: #2c3e50;
-    --text-secondary: #7f8c8d;
-    --border-color: #bdc3c7;
-    --error-color: #e74c3c;
-    --success-color: #27ae60;
+  --primary-color: #0f172a;
+  --secondary-color: #1e293b;
+  --accent-color: #3b82f6;
+  --background-color: #0a0f1c;
+  --card-color: rgba(30, 41, 59, 0.65);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --error-color: #ef4444;
+  --success-color: #10b981;
 }
 
+<<<<<<< HEAD
 [data-theme="dark"] {
     --primary-color: #ecf0f1;
     --secondary-color: #bdc3c7;
@@ -23,14 +29,19 @@
     --border-color: #4a6572;
 }
 
+=======
+/* RESET */
+>>>>>>> b667f0d (modil moha)
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
+/* BODY BACKGROUND */
 body {
+<<<<<<< HEAD
    background: linear-gradient(270deg, #00aad4, #004a76);
    background-size: 200% 200%;
    animation: gradientShift 5s ease infinite;
@@ -44,14 +55,34 @@ body {
 
 [data-theme="dark"] body {
     background: linear-gradient(270deg, #1a3a4a, #002b36);
+=======
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+>>>>>>> b667f0d (modil moha)
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Grille animée tech */
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(59, 130, 246, 0.05) 0,
+    rgba(59, 130, 246, 0.05) 2px,
+    transparent 2px,
+    transparent 20px
+  );
+  animation: matrixFlow 15s linear infinite;
 }
 
+<<<<<<< HEAD
 /* Theme Toggle */
 .theme-toggle {
     position: fixed;
@@ -84,78 +115,100 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Prend toute la hauteur */
+=======
+@keyframes matrixFlow {
+  from { transform: translateY(0); }
+  to { transform: translateY(100px); }
 }
 
+/* STRUCTURE */
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 20px;
+  animation: fadeIn 0.8s ease forwards;
+>>>>>>> b667f0d (modil moha)
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--card-color);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-color);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  padding: 20px 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  margin-bottom: 25px;
 }
 
 .logout-btn {
-    background-color: transparent;
-    color: var(--text-secondary);
-    padding: 8px 15px;
-    border-radius: 6px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid var(--border-color);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
 }
 
 .logout-btn:hover {
+<<<<<<< HEAD
     background-color: #f8f9fa;
     color: var(--accent-color);
     border-color: var(--accent-color);
     transform: translateY(-1px);
 }
 
+=======
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* AVATAR */
+>>>>>>> b667f0d (modil moha)
 .user-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .user-avatar {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: var(--accent-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 3px solid var(--accent-color);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--accent-color);
 }
 
 .user-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-text h2 {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    font-weight: 400;
-    margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
 }
 
 .user-text h1 {
-    font-size: 1.8rem;
-    color: var(--text-primary);
-    font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
+<<<<<<< HEAD
 /* CONTENU PRINCIPAL */
 .main-content {
     background-color: var(--card-color);
@@ -174,9 +227,24 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+=======
+/* MAIN */
+.main-content {
+  background: var(--card-color);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+.content-card {
+  padding: 30px;
+>>>>>>> b667f0d (modil moha)
+}
+
+/* HEADER DE SECTION */
 .card-header {
+<<<<<<< HEAD
     text-align: center;
     margin-bottom: 25px;
     padding-bottom: 15px;
@@ -195,9 +263,26 @@ body {
 .card-header p {
     color: var(--text-secondary);
     font-size: 1.1rem;
+=======
+  text-align: center;
+  margin-bottom: 30px;
 }
 
+.card-header h2 {
+  color: var(--accent-color);
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+
+.card-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+>>>>>>> b667f0d (modil moha)
+}
+
+/* STATS */
 .stats-section {
+<<<<<<< HEAD
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -301,9 +386,97 @@ body {
 .ranking-message p {
     color: var(--text-secondary);
     font-size: 1rem;
+=======
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
+.stat-card {
+  background: rgba(30, 58, 138, 0.5);
+  color: white;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.6); }
+  50% { text-shadow: 0 0 25px rgba(59, 130, 246, 1); }
+}
+
+.stat-label {
+  opacity: 0.8;
+  font-size: 1.1rem;
+}
+
+/* PROGRESS BAR */
+.progress-card h3 {
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.progress-bar {
+  height: 12px;
+  background-color: var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  position: relative;
+  overflow: hidden;
+  transition: width 0.6s ease-in-out;
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.15) 0,
+    rgba(255,255,255,0.15) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  from { background-position: 0 0; }
+  to { background-position: 20px 20px; }
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+>>>>>>> b667f0d (modil moha)
+}
+
+/* INFO SYSTEME */
 .user-info-card {
+<<<<<<< HEAD
     background-color: #f8f9fa;
     border: 1px solid var(--border-color);
     padding: 20px;
@@ -313,17 +486,19 @@ body {
 
 [data-theme="dark"] .user-info-card {
     background-color: #2c3e50;
+=======
+  margin: 30px 0;
+>>>>>>> b667f0d (modil moha)
 }
 
 .user-info-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 .info-grid {
+<<<<<<< HEAD
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
@@ -332,16 +507,20 @@ body {
 .info-item {
     display: flex;
     flex-direction: column;
+=======
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+>>>>>>> b667f0d (modil moha)
 }
 
 .info-label {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 5px;
-    font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 .info-value {
+<<<<<<< HEAD
     font-size: 1rem;
     color: var(--text-primary);
     font-weight: 600;
@@ -352,43 +531,45 @@ body {
     flex-direction: column;
     gap: 15px;
     margin-top: auto;
+=======
+  font-weight: 700;
+  color: var(--text-primary);
+>>>>>>> b667f0d (modil moha)
 }
 
+/* BOUTONS */
 .btn-primary, .btn-secondary {
-    padding: 15px 25px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  gap: 8px;
+  transition: 0.3s;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent-color), #2980b9);
-    color: white;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: white;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
 }
 
 .btn-secondary {
-    background-color: transparent;
-    color: var(--accent-color);
-    border: 2px solid var(--accent-color);
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
 }
 
 .btn-secondary:hover {
+<<<<<<< HEAD
     background-color: var(--accent-color);
     color: white;
 }
@@ -592,4 +773,8 @@ body {
         width: 80%;
         max-width: 1400px;
     }
+=======
+  background: var(--accent-color);
+  color: white;
+>>>>>>> b667f0d (modil moha)
 }
