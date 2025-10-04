@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Bouton toggle dark/light mode -->
+    <button class="theme-toggle" id="theme-toggle" title="Passer en mode sombre">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <div class="container">
         <header class="header">
             <div class="user-info">
@@ -25,9 +30,11 @@
             <div class="content-card">
                 <div class="card-header">
                     <h2>LISTE DES SIGNATURES</h2>
-                    <p>Personnes qui ont signé pour vous</p>
+                    <p>Vous avez reçu 15 signature(s)</p>
                 </div>
+
                 <div class="signatures-list">
+                    <!-- Signature 1 -->
                     <div class="signature-item">
                         <div class="signature-avatar">
                             <i class="fas fa-user"></i>
@@ -37,6 +44,10 @@
                             <div class="signature-info">
                                 <span class="info-label">Niveau:</span>
                                 <span class="info-value">Mame 2</span>
+                            </div>
+                            <div class="signature-info">
+                                <span class="info-label">Nom d'utilisateur:</span>
+                                <span class="info-value">@marie_mame2</span>
                             </div>
                             <div class="signature-info">
                                 <span class="info-label">Téléphone:</span>
@@ -49,6 +60,7 @@
                         </a>
                     </div>
 
+                    <!-- Signature 2 -->
                     <div class="signature-item">
                         <div class="signature-avatar">
                             <i class="fas fa-user"></i>
@@ -58,6 +70,10 @@
                             <div class="signature-info">
                                 <span class="info-label">Niveau:</span>
                                 <span class="info-value">DUT 2</span>
+                            </div>
+                            <div class="signature-info">
+                                <span class="info-label">Nom d'utilisateur:</span>
+                                <span class="info-value">@paul_dut2</span>
                             </div>
                             <div class="signature-info">
                                 <span class="info-label">Téléphone:</span>
@@ -70,6 +86,7 @@
                         </a>
                     </div>
 
+                    <!-- Signature 3 -->
                     <div class="signature-item">
                         <div class="signature-avatar">
                             <i class="fas fa-user"></i>
@@ -81,11 +98,67 @@
                                 <span class="info-value">Mame 1</span>
                             </div>
                             <div class="signature-info">
+                                <span class="info-label">Nom d'utilisateur:</span>
+                                <span class="info-value">@sophie_mame1</span>
+                            </div>
+                            <div class="signature-info">
                                 <span class="info-label">Téléphone:</span>
                                 <span class="info-value">+33 6 45 67 89 01</span>
                             </div>
                         </div>
                         <a href="https://wa.me/33645678901" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Signature 4 -->
+                    <div class="signature-item">
+                        <div class="signature-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="signature-details">
+                            <h3>Thomas Leroy</h3>
+                            <div class="signature-info">
+                                <span class="info-label">Niveau:</span>
+                                <span class="info-value">Parrain</span>
+                            </div>
+                            <div class="signature-info">
+                                <span class="info-label">Nom d'utilisateur:</span>
+                                <span class="info-value">@thomas_parrain</span>
+                            </div>
+                            <div class="signature-info">
+                                <span class="info-label">Téléphone:</span>
+                                <span class="info-value">+221 77 123 45 67</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/221771234567" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Signature 5 -->
+                    <div class="signature-item">
+                        <div class="signature-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="signature-details">
+                            <h3>Fatou Diop</h3>
+                            <div class="signature-info">
+                                <span class="info-label">Niveau:</span>
+                                <span class="info-value">Mame 3</span>
+                            </div>
+                            <div class="signature-info">
+                                <span class="info-label">Nom d'utilisateur:</span>
+                                <span class="info-value">@fatou_mame3</span>
+                            </div>
+                            <div class="signature-info">
+                                <span class="info-label">Téléphone:</span>
+                                <span class="info-value">+221 76 543 21 09</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/221765432109" class="whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                             WhatsApp
                         </a>
@@ -101,5 +174,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Gestion du thème pour signatures.html
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('theme-toggle').querySelector('i');
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+                document.getElementById('theme-toggle').title = 'Passer en mode clair';
+            } else {
+                icon.className = 'fas fa-moon';
+                document.getElementById('theme-toggle').title = 'Passer en mode sombre';
+            }
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
 </body>
 </html>
