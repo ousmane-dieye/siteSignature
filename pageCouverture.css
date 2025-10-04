@@ -12,16 +12,10 @@ body, html {
     left: 0;
     width: 100%;
     height: 100vh;
-    transition: all 0.8s ease-in-out;
-}
-
-.cover-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
+    background-image: url(inscriptiondut1/ressources/845.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
 }
 
 .welcome-container {

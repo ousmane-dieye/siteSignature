@@ -24,7 +24,7 @@ body {
 /* Partie gauche avec image + parallax léger */
 .left {
   flex: 0.6;
-  background: url('tof2.jpg') no-repeat center center/cover;
+  background: url('concept-de-controle-qualite-standard-m.jpg') no-repeat center center/cover;
   position: relative;
   transition: transform 0.5s ease;
 }
