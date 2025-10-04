@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Bouton toggle dark/light mode -->
+    <button class="theme-toggle" id="theme-toggle" title="Passer en mode sombre">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <div class="container">
         <header class="header">
             <div class="user-info">
@@ -16,36 +21,40 @@
                 </div>
                 <div class="user-text">
                     <h2>Heureux de vous revoir,</h2>
-                    <h1 id="user-name">Nom Prénom</h1>
+                    <h1 id="user-name">Steve Wozanik</h1>
                 </div>
             </div>
-             <a href="deconnexion.php" class="logout-btn" title="Déconnexion">
-        <i class="fas fa-sign-out-alt"></i>
-        Déconnexion
-    </a>
+            <a href="deconnexion.php" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Déconnexion
+            </a>
         </header>
 
         <div class="main-content">
             <div class="content-card">
                 <div class="card-header">
                     <h2>TABLEAU DE BORD SIGNATURES</h2>
-                    <p>Gérez vos signatures et suivez votre progression</p>
+                    <p>Gérez vos signatures et suivez votre classement</p>
                 </div>
 
                 <div class="stats-section">
                     <div class="stat-card">
-                        <div class="stat-number" id="signature-count">0</div>
+                        <div class="stat-number" id="signature-count">15</div>
                         <div class="stat-label">Signatures reçues</div>
                     </div>
                     
-                    <div class="progress-card">
-                        <h3>PROGRESSION</h3>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progress-fill"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span id="current-signatures">0</span>
-                            <span id="target-signatures">/ 100 signatures</span>
+                    <div class="ranking-card">
+                        <h3>CLASSEMENT</h3>
+                        <div class="ranking-number">#3</div>
+                        <div class="ranking-label">sur 45 DUT1</div>
+                        
+                        <!-- Classement dans le top 5 - Affichage médaille bronze -->
+                        <div class="ranking-message">
+                            <div class="medal bronze">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h4>Félicitations, vous êtes troisième !</h4>
+                            <p>Belle performance, gardez cette position !</p>
                         </div>
                     </div>
                 </div>
@@ -55,7 +64,7 @@
                     <div class="info-grid">
                         <div class="info-item">
                             <span class="info-label">Nom d'utilisateur</span>
-                            <span class="info-value" id="username">utilisateur123</span>
+                            <span class="info-value" id="username">steve_woz</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Téléphone</span>
@@ -78,34 +87,34 @@
         </div>
     </div>
 
+    <!-- Modal pour obtenir une signature -->
     <div class="modal" id="signature-modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>OBTENIR UNE SIGNATURE</h2>
-            <span class="close-modal" id="close-modal">&times;</span>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>OBTENIR UNE SIGNATURE</h2>
+                <span class="close-modal" id="close-modal">&times;</span>
+            </div>
+            <p>Veuillez entrer les informations du DUT2 ou Mame</p>
+            
+            <form method="POST" action="traiter_signature.php" id="signature-form">
+                <div class="form-group">
+                    <label for="username-input">Nom d'utilisateur</label>
+                    <input type="text" id="username-input" name="username" placeholder="Ex: jerry_dut2" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone-input">Numéro de téléphone</label>
+                    <input type="tel" id="phone-input" name="telephone" placeholder="Ex: +221 77 777 77 77" required>
+                </div>
+                
+                <div class="error-message" id="username-error">Informations invalides</div>
+                
+                <button type="submit" class="btn-primary" id="submit-signature">VALIDER</button>
+            </form>
+            
+            <div class="success-message" id="success-message">Signature enregistrée avec succès!</div>
         </div>
-        <p>Veuillez entrer les informations du DUT2 ou Mame</p>
-        
-        <form method="POST" action="traiter_signature.php" id="signature-form">
-            <div class="form-group">
-                <label for="username-input">Nom d'utilisateur</label>
-                <input type="text" id="username-input" name="username" placeholder="Ex: Jerry" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone-input">Numéro de téléphone</label>
-                <input type="tel" id="phone-input" name="telephone" placeholder="Ex: +221 77 777 77 77" required>
-            </div>
-            
-            <div class="error-message" id="username-error">Informations invalides</div>
-            
-            <button type="submit" class="btn-primary" id="submit-signature">VALIDER</button>
-        </form>
-        
-        <div class="success-message" id="success-message">Signature enregistrée avec succès!</div>
     </div>
-</div>
-
 
     <script src="accueilDut1.js"></script>
 </body>

@@ -52,6 +52,11 @@ $totalSignatures = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Bouton toggle dark/light mode -->
+    <button class="theme-toggle" id="theme-toggle" title="Changer le thème">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <div class="container">
         <header class="header">
             <div class="user-info">
@@ -120,5 +125,37 @@ $totalSignatures = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
             </div>
         </div>
     </div>
+
+    <script>
+        // Gestion du thème pour signatures
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('theme-toggle').querySelector('i');
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+                document.getElementById('theme-toggle').title = 'Passer en mode clair';
+            } else {
+                icon.className = 'fas fa-moon';
+                document.getElementById('theme-toggle').title = 'Passer en mode sombre';
+            }
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
 </body>
 </html>

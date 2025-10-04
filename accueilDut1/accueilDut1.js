@@ -1,8 +1,6 @@
 // Éléments DOM
 const userNameElement = document.getElementById('user-name');
 const signatureCountElement = document.getElementById('signature-count');
-const currentSignaturesElement = document.getElementById('current-signatures');
-const progressFillElement = document.getElementById('progress-fill');
 const getSignatureBtn = document.getElementById('get-signature-btn');
 const signatureModal = document.getElementById('signature-modal');
 const closeModalBtn = document.getElementById('close-modal');
@@ -11,6 +9,34 @@ const phoneInput = document.getElementById('phone-input');
 const usernameError = document.getElementById('username-error');
 const successMessage = document.getElementById('success-message');
 const signatureForm = document.getElementById('signature-form');
+const themeToggle = document.getElementById('theme-toggle');
+
+// Gestion du thème
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+}
+
+function updateThemeIcon(theme) {
+    const icon = themeToggle.querySelector('i');
+    if (theme === 'dark') {
+        icon.className = 'fas fa-sun';
+        themeToggle.title = 'Passer en mode clair';
+    } else {
+        icon.className = 'fas fa-moon';
+        themeToggle.title = 'Passer en mode sombre';
+    }
+}
 
 // Ouvrir le modal 
 function openSignatureModal() {
@@ -33,7 +59,6 @@ function validateSignatureInfo(username, telephone) {
         return { isValid: false, message: 'Veuillez remplir tous les champs' };
     }
     
-    // Validation du tél
     const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
     if (!phoneRegex.test(telephone)) {
         return { isValid: false, message: 'Format de téléphone invalide' };
@@ -56,7 +81,6 @@ function handleFormSubmit(event) {
         return;
     }
     
-    // Soumettre le formulaire via AJAX
     const formData = new FormData(signatureForm);
     
     fetch('traiter_signature.php', {
@@ -66,17 +90,14 @@ function handleFormSubmit(event) {
     .then(response => response.text())
     .then(result => {
         if (result.startsWith('success:')) {
-            // Signature réussie
             usernameError.style.display = 'none';
             successMessage.textContent = result.replace('success:', '');
             successMessage.style.display = 'block';
             
-            // Recharger la page pour mettre à jour les données
             setTimeout(() => {
                 window.location.reload();
             }, 2000);
         } else if (result.startsWith('error:')) {
-            // Erreur
             usernameError.textContent = result.replace('error:', '');
             usernameError.style.display = 'block';
         }
@@ -90,7 +111,11 @@ function handleFormSubmit(event) {
 
 // Initialisation
 function initApp() {
+    // Initialiser le thème
+    initTheme();
+    
     // Événements
+    themeToggle.addEventListener('click', toggleTheme);
     getSignatureBtn.addEventListener('click', openSignatureModal);
     closeModalBtn.addEventListener('click', closeSignatureModal);
     signatureForm.addEventListener('submit', handleFormSubmit);
